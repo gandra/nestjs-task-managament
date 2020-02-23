@@ -8,10 +8,7 @@ import { TaskStatus } from './task-status.enum';
 
 @Injectable()
 export class TasksService {
-  constructor(
-    @InjectRepository(TaskRepository)
-    private taskRepository: TaskRepository,
-  ) {}
+  constructor(private readonly taskRepository: TaskRepository) {}
 
   async getAllTasks(): Promise<Task[]> {
     return this.taskRepository.find();
