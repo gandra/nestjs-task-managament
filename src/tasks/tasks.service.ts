@@ -10,12 +10,8 @@ import { TaskStatus } from './task-status.enum';
 export class TasksService {
   constructor(private readonly taskRepository: TaskRepository) {}
 
-  async getAllTasks(): Promise<Task[]> {
-    return this.taskRepository.find();
-  }
-
-  getTasksWithFilters(filterDto: GetTasksFilterDto): Promise<Task[]> {
-    return this.taskRepository.getTasksWithFilters(filterDto);
+  async getTasks(filterDto: GetTasksFilterDto) {
+    return await this.taskRepository.getTasks(filterDto);
   }
   
   async getTaskById(id: number): Promise<Task> {
